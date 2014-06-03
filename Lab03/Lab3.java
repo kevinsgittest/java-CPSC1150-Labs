@@ -10,8 +10,8 @@
 
 public class Lab3
 {
-  // precondition: a, b, and c need to be filled in
-  // postcondition: returns x1 and x2 if possible, or the problem with the initial polynomial 
+  // precondition: you need to supply a system argument
+  // postcondition: return months and possibly years taken before you are broke.
   public static void main (String[] args)
   {
     // Constants

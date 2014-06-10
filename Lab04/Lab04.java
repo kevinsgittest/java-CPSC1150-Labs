@@ -53,15 +53,23 @@ public class Lab04{
     double point3y= myInput.nextInt();    
 
     // Check for straight line inputs
-
-    // Calculate SA of triangle
-    double line1 = Math.sqrt(Math.pow(Math.abs(point1x - point2x), 2) + Math.pow(Math.abs(point1y - point2y), 2));
-    double line2 = Math.sqrt(Math.pow(Math.abs(point2x - point3x), 2) + Math.pow(Math.abs(point2y - point3y), 2));
-    double line3 = Math.sqrt(Math.pow(Math.abs(point1x - point3x), 2) + Math.pow(Math.abs(point1y - point3y), 2));
-  
-    double surfaceArea = (line1 + line2 + line3);
-    System.out.print("The surface area of a triangle with point1: (" + point1x + "," + point1y + "), point2: (" + point2x + "," + point2y + ") and point3: (" + point3x + "," + point3y + ") is: ");
-    return surfaceArea;
+    if (Math.sqrt(Math.pow(Math.abs(point1y - point2y), 2) / Math.pow(Math.abs(point1x - point2x), 2)) &&
+      Math.sqrt(Math.pow(Math.abs(point2y - point3y), 2) / Math.pow(Math.abs(point2x - point3x), 2)) &&
+      Math.sqrt(Math.pow(Math.abs(point1y - point3y), 2) / Math.pow(Math.abs(point1x - point3x), 2))) 
+    {
+      double surfaceArea = (Math.sqrt(Math.pow((Math.max(Math.max(point1x, point2x), point3x) - Math.min(Math.min(point1x, point2x), point3x))), 2) + (Math.pow((Math.max(Math.max(point1y, point2y), point3y) - Math.min(Math.min(point1y, point2y), point3y))), 2));
+      System.out.print("The surface area of a line with point1: (" + point1x + "," + point1y + "), point2: (" + point2x + "," + point2y + ") and point3: (" + point3x + "," + point3y + ") is: ");
+    }
+    else {
+      // Calculate SA of triangle
+      double line1 = Math.sqrt(Math.pow(Math.abs(point1x - point2x), 2) + Math.pow(Math.abs(point1y - point2y), 2));
+      double line2 = Math.sqrt(Math.pow(Math.abs(point2x - point3x), 2) + Math.pow(Math.abs(point2y - point3y), 2));
+      double line3 = Math.sqrt(Math.pow(Math.abs(point1x - point3x), 2) + Math.pow(Math.abs(point1y - point3y), 2));
+    
+      double surfaceArea = (line1 + line2 + line3);
+      System.out.print("The surface area of a triangle with point1: (" + point1x + "," + point1y + "), point2: (" + point2x + "," + point2y + ") and point3: (" + point3x + "," + point3y + ") is: ");
+      return surfaceArea;
+      }
   }
 
   public static double circleInput(){

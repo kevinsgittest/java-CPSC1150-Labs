@@ -1,5 +1,16 @@
+/*Program Name: Hello
+ *Author: Kevin
+ *Date: June 7 2014
+ *Course: CPSC1150-1
+ *Instructor: H.Darbandi
+ *Compiler: JDK 1.7
+ *Hardware: Intel(R) Celeron(R) 2955U @ 1.40GHz
+ */
+
 import java.util.*;
 public class Lab04{
+  // precondition: none (menu later)
+  // postcondition: returns the surface area of chosen object.
   public static void main (String[] args){
     int userInput = getInput();
     double surfaceArea = 0;
@@ -33,6 +44,8 @@ public class Lab04{
 
   public static double triangleInput() {
     // get inputs
+    double EPSILON = 0.01;
+    double surfaceArea = 0;
     Scanner myInput=new Scanner(System.in);
     System.out.print("Please enter the x-coordinate of point1: "); 
     double point1x= myInput.nextInt();  
@@ -53,11 +66,14 @@ public class Lab04{
     double point3y= myInput.nextInt();    
 
     // Check for straight line inputs
-    if (Math.sqrt(Math.pow(Math.abs(point1y - point2y), 2) / Math.pow(Math.abs(point1x - point2x), 2)) &&
-      Math.sqrt(Math.pow(Math.abs(point2y - point3y), 2) / Math.pow(Math.abs(point2x - point3x), 2)) &&
-      Math.sqrt(Math.pow(Math.abs(point1y - point3y), 2) / Math.pow(Math.abs(point1x - point3x), 2))) 
+    if (Math.sqrt(Math.pow(Math.abs(point1y - point2y), 2) / Math.pow(Math.abs(point1x - point2x), 2)) *2 - Math.sqrt(Math.pow(Math.abs(point2y - point3y), 2) / Math.pow(Math.abs(point2x - point3x), 2)) -       Math.sqrt(Math.pow(Math.abs(point1y - point3y), 2) / Math.pow(Math.abs(point1x - point3x), 2)) < EPSILON) 
     {
-      double surfaceArea = (Math.sqrt(Math.pow((Math.max(Math.max(point1x, point2x), point3x) - Math.min(Math.min(point1x, point2x), point3x))), 2) + (Math.pow((Math.max(Math.max(point1y, point2y), point3y) - Math.min(Math.min(point1y, point2y), point3y))), 2));
+      // double surfaceArea = (Math.sqrt((Math.pow((Math.max(Math.max(point1x, point2x), point3x) - Math.min(Math.min(point1x, point2x), point3x))), 2) + (Math.pow((Math.max(Math.max(point1y, point2y), point3y) - Math.min(Math.min(point1y, point2y), point3y))), 2)));
+      double slope1 = Math.sqrt(Math.pow(Math.abs(point1x - point2x), 2) + Math.pow(Math.abs(point1y - point2y), 2));
+      double slope2 = Math.sqrt(Math.pow(Math.abs(point2x - point3x), 2) + Math.pow(Math.abs(point2y - point3y), 2));
+      double slope3 = Math.sqrt(Math.pow(Math.abs(point1x - point3x), 2) + Math.pow(Math.abs(point1y - point3y), 2));
+      
+      surfaceArea = Math.max(Math.max(slope1, slope2), slope3); 
       System.out.print("The surface area of a line with point1: (" + point1x + "," + point1y + "), point2: (" + point2x + "," + point2y + ") and point3: (" + point3x + "," + point3y + ") is: ");
     }
     else {
@@ -66,10 +82,11 @@ public class Lab04{
       double line2 = Math.sqrt(Math.pow(Math.abs(point2x - point3x), 2) + Math.pow(Math.abs(point2y - point3y), 2));
       double line3 = Math.sqrt(Math.pow(Math.abs(point1x - point3x), 2) + Math.pow(Math.abs(point1y - point3y), 2));
     
-      double surfaceArea = (line1 + line2 + line3);
+      surfaceArea = (line1 + line2 + line3);
       System.out.print("The surface area of a triangle with point1: (" + point1x + "," + point1y + "), point2: (" + point2x + "," + point2y + ") and point3: (" + point3x + "," + point3y + ") is: ");
-      return surfaceArea;
       }
+    // Empty return, should never get to here.
+    return surfaceArea;
   }
 
   public static double circleInput(){

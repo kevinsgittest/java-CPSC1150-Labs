@@ -15,9 +15,9 @@ public class Lab05 {
   public static void main(String[] args) {
     int input = getInput();
     boolean prime = false, palindrome = false;
-    for (int x = 2; x < input; x++) {
+    for (int x = 1; x < input; x++) {
       if (isPrime(x) && isPalindrome(x)) {
-        System.out.println(x + " is a palindrome prime!");
+        System.out.println(x);
       }
     }
   }

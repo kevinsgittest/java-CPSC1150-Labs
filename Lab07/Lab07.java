@@ -1,8 +1,8 @@
 import java.util.*;
 
-/*Program Name: EncryptionProgram
+/*Program Name: Arrays Lab
  *Author: Kevin
- *Date: June 23 2014
+ *Date: June 30 2014
  *Course: CPSC1150-1
  *Instructor: H.Darbandi
  *Compiler: JDK 1.7
@@ -13,26 +13,32 @@ public class Lab07 {
   public static void main(String[] args) {
     int[] arrItem1 = new int[10];
     int[] arrItem4 = new int[10];
+    int[] newArrItem4 = new int[arrItem4.length];
     int[] arrItem5 = new int[50];
     char[] arrItem7 = new char[256];
-    int size;
  
     initialize(arrItem1);      // Item 1
+    System.out.println("Initialized an array of length: " + arrItem1.length + " and filled it with random numbers from 1 to 10: ");
     printArray(arrItem1);      // Item 2
    
     System.out.println();
     arrItem1 = reverseArray(arrItem1);    // Item 3
+    System.out.println("Array1 reversed: ");
     printArray(arrItem1);
  
     System.out.println();   
-    arrItem4 = sumArray(arrItem1);  // Item 4
-    printArray(arrItem4);
+    sumArray(arrItem1, newArrItem4);  // Item 4
+    System.out.println("The sum of Array1 reversed up to the digit in the loop: ");
+    printArray(newArrItem4);
 
-    arrItem5 = initialize(arrItem5, 10, 20);   // Item 5
+    int min = 10;
+    int max = 20;
+    arrItem5 = initialize(arrItem5, min, max);   // Item 5
+    System.out.println("Initialized an array of length: " + arrItem5.length + " and filled it with random numbers from " + min + " to " + max + ": ");
     countArray(arrItem5);    // Ite m6
  
     arrItem7 = readArray(arrItem7);  // item 7
- 
+    System.out.println("Your array split based on spaces: ");
     printOneInLine(arrItem7);  // item 8
   }
 
@@ -54,17 +60,16 @@ public class Lab07 {
     return rev;
   }
 
-  public static int[] sumArray(int[] arr) {
-    int[] sumArr = new int[arr.length];
+  public static int[] sumArray(int[] arr, int[] newArr) {
     int sum;
     for (int i = 0; i < arr.length; i++) {
       sum = 0;
       for (int j = 0; j <= i; j++) {
         sum += arr[j];
       }
-      sumArr[i] = sum;
+      newArr[i] = sum;
     }
-    return sumArr;
+    return newArr;
   }
 
   public static int[] initialize(int[] arr, int downLimit, int upLimit) {
@@ -91,7 +96,6 @@ public class Lab07 {
         min = arr[i];
     }
 
-    System.out.println("Max: " + max + ", Min: " + min);
     for (int i = min; i <= max; i++) {
       count = 0;
       for (int j = 0; j < arr.length; j++) {
@@ -104,7 +108,7 @@ public class Lab07 {
 
   public static char[] readArray(char[] arr) {
     String myMessage;
-    System.out.print("Please enter a string to be encoded or decoded: ");
+    System.out.print("Please enter a string to be put into an array: ");
     Scanner myIn = new Scanner(System.in);
     myMessage = myIn.nextLine();// Read a line of message
 

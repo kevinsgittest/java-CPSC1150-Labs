@@ -102,13 +102,14 @@ public class Lab08 {
     // returns: none. Prints to console though.
     boolean leadingZeroes = true;
     for (int x = 0; x < i.length; x++) {
-      
-      if (leadingZeroes && i[x] == 0) {
+      if (leadingZeroes && i[x] == 0)
         System.out.print(' ');
-      }
       else {
+        if ((i.length - x) % 3 == 0 && leadingZeroes == false)
+          System.out.print(",");
         leadingZeroes = false;
         System.out.print(i[x]);
+        
       }
     }
     System.out.println();

@@ -2,7 +2,7 @@
     public static void main(String[] args) {
         int[] arr = {1,2,3,4,5,6,6,6,6,7,8,9};
         System.out.println(isPattern(arr));
-
+// This is my comment!
         int[] arr2 = {1,23,4,5,6,7,8,9,9,9,9,9,10};
         System.out.println(isPattern(arr2));
 

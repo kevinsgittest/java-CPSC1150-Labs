@@ -14,7 +14,7 @@ public class Lab11{
         System.out.println(numbersArr[i]);
     }
     //System.out.println(numbersArr[1]);
-    printAllPermutations(numbersArr[0]);
+    //printAllPermutations(numbersArr[0]);
   }
   
   public static char[][] getCharacters() {
@@ -32,11 +32,20 @@ public class Lab11{
     char[][] characters = {_0, _1, _2, _3, _4, _5, _6, _7, _8, _9};
     return characters;
   }
+
+  public static int getLengthOfFile(Scanner in) throws FileNotFoundException {
+    int count = 0;
+    while (in.hasNextLine()) {
+      in.nextLine();
+      count ++;
+    }
+    return count;
+  }
  
   public static String[] getPhoneNumberArray(File inputFile) throws FileNotFoundException {
     Scanner in = new Scanner(inputFile);
     String tmp = "";
-    String[] out = new String[1000]; //todo make size = file size
+    String[] out = new String[getLengthOfFile(in)]; //todo make size = file size
     int count = 0;
     while (in.hasNext()) {
       tmp = in.next();
@@ -49,19 +58,12 @@ public class Lab11{
   return out;
   } 
 
-  public static void printAllPermutations(String phoneNumber) {
-    char[][] chars = getCharacters();
-    int tmp = 0;
-    System.out.println("\n" + phoneNumber);
-
-    for (int i = 0; i < phoneNumber.length(); i++) {
-      // Main loop. Should iterate 7 times. Once for each number
-      tmp = Character.getNumericValue(phoneNumber.charAt(i));
-      System.out.print(tmp);
-      for (int j = 0; j < chars[tmp].length; j++) {
-        System.out.print(chars[tmp][j]);
-      }
-      System.out.println();
+  public static int[] wordsToNumbers(File wordsFile) throws FileNotFoundException {
+    Scanner in = new Scanner(wordsFile);
+    int[] out = new int[getLengthOfFile(in)];
+    while (in.hasNext()) {
+      continue;
     }
+    return out;
   }
 }

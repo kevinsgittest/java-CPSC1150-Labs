@@ -2,7 +2,7 @@ import java.io.FileNotFoundException;
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.Scanner;
-/** tests readWrite method   */
+
 public class Lab11{
 	public static void main (String[] args) throws FileNotFoundException {
     File telephoneNumbers = new File("telephone.txt");
@@ -13,8 +13,10 @@ public class Lab11{
       if (numbersArr[i] != null)
         System.out.println(numbersArr[i]);
     }
-    //System.out.println(numbersArr[1]);
-    //printAllPermutations(numbersArr[0]);
+    int[] wordsAsNumbers = wordsToNumbers(words);
+    for (int i : wordsAsNumbers) {
+      System.out.println(i);
+    }
   }
   
   public static char[][] getCharacters() {
@@ -61,8 +63,10 @@ public class Lab11{
   public static int[] wordsToNumbers(File wordsFile) throws FileNotFoundException {
     Scanner in = new Scanner(wordsFile);
     int[] out = new int[getLengthOfFile(in)];
+    int count = 0;
     while (in.hasNext()) {
-      continue;
+      out[count] = Integer.parseInt(in.next());
+      count ++;
     }
     return out;
   }
